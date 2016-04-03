@@ -94,7 +94,7 @@ public class MainTest {
 //        ChatterBotSession bot1session = bot1.createSession();
 
         InputStream inputStream;
-        String conversa = "Hi";
+        String conversa = "Hi, bot";
         String miRespuesta = "";
         Boolean listen = false;
         while (true) {
@@ -106,7 +106,9 @@ public class MainTest {
             
             // Habrá que ajustar los mensajes para que funcione bien.
             if (miRespuesta.equals("stop Google")) listen = false;
-            else if (miRespuesta.equals("Okay Google") || listen) {
+            else if ((miRespuesta.equals("Okay Google") || listen) &&
+            		 !miRespuesta.equals("")) {
+            	if (listen) conversa = miRespuesta;
             	listen = true;
             	conversa = bot1session.think(conversa);
             	System.out.println("bot1> " + conversa);
